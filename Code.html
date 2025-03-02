@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Mahesh</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Include JQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #212121; /* Matte black background */
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Header Image */
+        .header-img {
+            width: 70px; /* Set the size of the image to be like an icon */
+            position: absolute; /* Positioning it at the top left */
+            top: 20px; /* Distance from the top */
+            left: 20px; /* Distance from the left */
+        }
+
+        /* Navigation Menu */
+        nav {
+            position: absolute;
+            top: 20px;
+            right: 0;
+            left: 0; /* Stretch across the screen */
+            text-align: center; /* Center the links horizontally */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Center the links inside the ul */
+            gap: 20px;
+        }
+
+        .link-102 {
+            color: #ffffff; /* Default text color */
+            font-size: 20px;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            display: inline-block;
+            transition: transform 0.3s, color 0.3s; /* Add color transition */
+        }
+
+        .link-102:hover {
+            transform: scale(1.07); /* Scale effect */
+            color: yellow; /* Change text color to yellow on hover */
+        }
+
+        .content {
+            display: flex;
+            align-items: flex-start; /* Align content to the top */
+            justify-content: space-between; /* Add space between the columns */
+            width: 100%; /* Make sure it takes full width */
+            max-width: 1200px; /* Optional: set a max width if needed */
+        }
+
+        .text {
+            flex: 1; /* Take up half of the space */
+            margin-right: 30px; /* Add some space between the columns */
+            text-align: left;
+        }
+
+        .text h1 {
+            cursor: pointer;
+            transition: color 0.3s ease-in-out, transform 0.5s ease-in-out;
+            color: white;
+            margin: 0;
+            font-size: 40px;
+        }
+
+        .text h1:hover {
+            color: gold;
+            transform: scale(1.2);
+        }
+
+        .text p {
+            position: relative;
+            transition: color 0.3s ease-in-out;
+            color: red;
+            margin: 0;
+            font-size: 50px;
+            cursor: pointer;
+        }
+
+        .text p:hover {
+            color: gold;
+        }
+
+        /* Icon container */
+        .icon {
+            display: none;
+            position: absolute;
+            top: 100%; /* Position the icons below the text */
+            left: 0;
+            margin-top: 10px;
+            text-align: center;
+            opacity: 0; /* Make the icons invisible initially */
+            transition: opacity 0.3s ease-in-out; /* Smooth opacity transition */
+        }
+
+        /* Show icons on hover */
+        .hover-text:hover + .icon {
+            display: block;
+            opacity: 1; /* Make the icons appear smoothly */
+        }
+
+        .icon img {
+            display: inline-block;
+            max-width: 30px;
+            margin: 0 5px;
+        }
+
+        .image {
+            flex: 1; /* Take up the other half of the space */
+            width: 100%; /* Ensure the image takes up the full width of the column */
+            height: auto;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+        }
+
+        /* 3D Box Card */
+        .box-card {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1s ease;
+            cursor: pointer;
+        }
+
+        /* Box rotation effect on hover */
+        .box-card:hover {
+            animation: rotate3d 8s infinite linear;
+        }
+
+        .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            backface-visibility: visible;
+            border-radius: 12px;
+            background: linear-gradient(145deg, #2a2a2a, #383838);
+            border: 2px solid #646cff;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        /* Hover effects for faces */
+        .face::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            top: -100%;
+            left: -100%;
+            transition: all 0.5s ease;
+            transform: translateZ(20px);
+        }
+
+        .face::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .face:hover::before {
+            top: 100%;
+            left: 100%;
+        }
+
+        .face:hover::after {
+            opacity: 1;
+        }
+
+        .front {
+            transform: translateZ(100px);
+            border-color: #646cff;
+        }
+
+        .back {
+            transform: translateZ(-100px) rotateY(180deg);
+            border-color: #00bcd4;
+        }
+
+        .right {
+            transform: translateX(100px) rotateY(90deg);
+            border-color: #4caf50;
+        }
+
+        .left {
+            transform: translateX(-100px) rotateY(-90deg);
+            border-color: #ff4081;
+        }
+
+        .top {
+            transform: translateY(-100px) rotateX(90deg);
+            border-color: #ffc107;
+        }
+
+        .bottom {
+            transform: translateY(100px) rotateX(-90deg);
+            border-color: #9c27b0;
+        }
+
+        @keyframes rotate3d {
+            0% {
+                transform: rotateX(0) rotateY(0);
+            }
+            25% {
+                transform: rotateX(90deg) rotateY(90deg);
+            }
+            50% {
+                transform: rotateX(180deg) rotateY(180deg);
+            }
+            75% {
+                transform: rotateX(270deg) rotateY(270deg);
+            }
+            100% {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .box-card {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Landing Page Content -->
+    <div class="content">
+        <div class="text">
+            <h1>Hello</h1>
+            <p>I am Mahesh</p>
+            <h1 class="hover-text" data-toggle="tooltip" data-placement="bottom" title="Developer">Developer</h1>
+            <div class="icon">
+                <img src="/attach/html-1.png" alt="HTML Icon" title="HTML">
+                <img src="/attach/css-3.png" alt="CSS Icon" title="CSS">
+                <img src="/attach/java-script.png" alt="JavaScript Icon" title="JavaScript">
+                <img src="/attach/Ivanti_Log.png" alt="Ivanti Icon" title="Ivanti">
+                <img src="/attach/icons8-powershell-96.png" alt="Powershell Icon" title="Powershell">
+                <img src="/attach/java.png" alt="Java Icon" title="Java">
+            </div>
+        </div>
+		
+        <div class="image">
+            <!-- Added box card content -->
+            <div class="container">
+                <div class="box-card">
+                    <div class="face front">ITSM</div>
+                    <div class="face back">ITAM</div>
+                    <div class="face right">API</div>
+                    <div class="face left">CMDB</div>
+                    <div class="face top">Cloud</div>
+                    <div class="face bottom">On-Prem</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+  
+    <!-- Image at the top-left corner (icon) -->
+
+    <img src="/incsm.png" alt="Description of the image"style="float: left; margin-right: 10px;" alt="Ivanti Neurons" class="header-img">
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            <li><a href="/Code.html" class="link-102">Home</a></li>
+            <li><a href="/Skill.html" class="link-102">Skill</a></li>
+            <li><a href="/Experience.html" class="link-102">Experience</a></li>
+            <li><a href="#" class="link-102">Ivanti Certificate</a></li>
+            <li><a href="#" class="link-102">Awards</a></li>
+            <li><a href="#" class="link-102">Projects</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        $(document).ready(function(){
+            // Initialize tooltips
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+  <br>
+  
+  
+</body>
+</html>
