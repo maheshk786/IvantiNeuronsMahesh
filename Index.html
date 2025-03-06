@@ -107,28 +107,33 @@
         }
 
         /* Icon container */
-        .icon {
-            display: none;
-            position: absolute;
-            top: 100%; /* Position the icons below the text */
-            left: 0;
-            margin-top: 10px;
-            text-align: center;
-            opacity: 0; /* Make the icons invisible initially */
-            transition: opacity 0.3s ease-in-out; /* Smooth opacity transition */
-        }
+        .content {
+    position: relative; /* This will ensure that absolute positioning within .content is relative to it */
+}
 
-        /* Show icons on hover */
-        .hover-text:hover + .icon {
-            display: block;
-            opacity: 1; /* Make the icons appear smoothly */
-        }
+.icon {
+    display: none;
+    position: absolute;
+    top: 100%; /* Position the icons below the text */
+    left: 0;
+    margin-top: 10px;
+    text-align: center;
+    opacity: 0; /* Make the icons invisible initially */
+    transition: opacity 0.3s ease-in-out; /* Smooth opacity transition */
+}
 
-        .icon img {
-            display: inline-block;
-            max-width: 30px;
-            margin: 0 5px;
-        }
+/* Show icons on hover */
+.hover-text:hover + .icon {
+    display: block;
+    opacity: 1; /* Make the icons appear smoothly */
+}
+
+.icon img {
+    display: inline-block;
+    max-width: 30px;
+    margin: 0 5px;
+}
+
 
         .image {
             flex: 1; /* Take up the other half of the space */
@@ -272,7 +277,7 @@
                 <img src="/attach/java-script.png" alt="JavaScript Icon" title="JavaScript">
                 <img src="/attach/Ivanti_Log.png" alt="Ivanti Icon" title="Ivanti">
                 <img src="/attach/icons8-powershell-96.png" alt="Powershell Icon" title="Powershell">
-                <img src="/attach/java.png" alt="Java Icon" title="Java">
+                
             </div>
         </div>
 		
