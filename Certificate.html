@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Include JQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #212121; /* Matte black background */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Header Image */
+        .header-img {
+            width: 70px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        /* Skills and Experience Section */
+        .skills-card-section {
+            text-align: center;
+            margin-top: 60px;
+            padding-bottom: 60px; /* Space for the fixed nav at the bottom */
+        }
+
+        .skills-card-section h2 {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .skills-card-section p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .hover-underline {
+            font-size: 2rem;
+            color: #ffffff;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hover-underline::after,
+        .hover-underline::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #ff0000, #00ffff);
+            bottom: -5px;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease-out;
+        }
+
+        .hover-underline::before {
+            top: -5px;
+            transform-origin: left;
+        }
+
+        .hover-underline:hover::after,
+        .hover-underline:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Experience Cards */
+        .experience-card {
+            background-color: #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            width: 90%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: visible; /* Ensure that the content is not cut off */
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            min-height: auto; /* Let the card height adjust based on content */
+        }
+
+        /* Avoid text overflow */
+        .experience-card h3, .experience-card p, .experience-card ol {
+            overflow-wrap: break-word;
+        }
+
+        /* Optional: To ensure that the text within the list does not get cut off */
+        .experience-card ol {
+            margin-left: 20px;
+            padding-left: 20px;
+            overflow: visible;
+        }
+
+        .experience-card p {
+            font-size: 18px;
+            color: #ddd;
+        }
+
+        .experience-card ul {
+            list-style-type: none;
+            padding: 0;
+            color: #ccc;
+        }
+
+        .experience-card ul li {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .experience-card:hover {
+            background-color: #444; /* Darken the background on hover */
+            transform: scale(1.05); /* Slightly enlarge the card on hover */
+        }
+
+        /* Navigation Menu */
+        nav {
+            position: absolute;
+            top: 20px;
+            right: 0;
+            left: 0; /* Stretch across the screen */
+            text-align: center; /* Center the links horizontally */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Center the links inside the ul */
+            gap: 20px;
+        }
+
+        .link-102 {
+            color: #ffffff;
+            font-size: 20px;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .link-102:hover {
+            transform: scale(1.07);
+            color: yellow;
+        }
+
+        .uleffect {
+            list-style-type: none;  /* Remove default bullets */
+            padding-left: 20px;      /* Add padding to left */
+        }
+
+        /* Add custom symbol before each list item */
+        .uleffect li::before {
+            content: "→";            /* The custom symbol */
+            color: yellow;           /* Color of the symbol */
+            font-size: 20px;         /* Size of the symbol */
+            margin-right: 10px;      /* Space between the symbol and text */
+        }
+
+        /* Styling for images inside the card */
+        .experience-card img {
+            width: 100%; /* Ensure the image takes up the full width of the container */
+            height: auto; /* Maintain aspect ratio */
+            object-fit: contain; /* Ensure images fit within the card */
+            margin-bottom: 15px; /* Space between images */
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Landing Page Content -->
+    <img src="/incsm.png" alt="Description of the image" style="float: left; margin-right: 10px;" alt="Ivanti Neurons" class="header-img">
+
+    <!-- Skills and Experience Section -->
+    <div class="skills-card-section">
+        <br> 
+        <h2><div class="hover-underline">Certificate</div></h2>
+        <br> 
+        <p>Proven expertise in ITSM, ITAM, and Ivanti integrations, driving efficiency and business success through optimized workflows and automation.</p>
+    </div>
+
+    <!-- Experience Cards Section with Separate Cards for Each Image -->
+    <div class="experience-card">
+        <img src="/experienced-consultant-service-manager-on-demand.png" alt="Image 8">
+    </div>
+
+    <div class="experience-card">
+        <img src="/Ivanti Neurons for ITSM - Consultant - Scenario-based.png" alt="Image 1">
+    </div>
+
+    <div class="experience-card">
+        <img src="/Ivanti Neurons for ITSM - Administrator Administration.png" alt="Image 2">
+    </div>
+
+    <div class="experience-card">
+        <img src="/Ivanti Neurons for ITAM - Administrator Configuration.png" alt="Image 3">
+    </div>
+
+    <div class="experience-card">
+        <img src="/Ivanti Neurons for ITSM - Administrator Configuration.png" alt="Image 4">
+    </div>
+
+    <div class="experience-card">
+        <img src="/service-manager-administrator-certification-exam-english.png" alt="Image 5">
+    </div>
+
+    <div class="experience-card">
+        <img src="/ivanti-neurons-for-itsm-using-searches.png" alt="Image 6">
+    </div>
+
+    <div class="experience-card">
+        <img src="/ivanti-neurons-for-itsm-principles-and-best-practices.png" alt="Image 7">
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            <li><a href="/Index.html" class="link-102">Home</a></li>
+            <li><a href="/Skill.html" class="link-102">Skill</a></li>
+            <li><a href="/Experience.html" class="link-102">Experience</a></li>
+            <li><a href="/Certificate.html" class="link-102">Certificate</a></li>
+            <li><a href="/Awards.html" class="link-102">Awards</a></li>
+            <li><a href="#" class="link-102">Projects</a></li>
+        </ul>
+    </nav>
+
+</body>
+</html>
