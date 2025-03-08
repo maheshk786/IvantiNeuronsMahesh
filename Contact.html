@@ -174,6 +174,34 @@
             transform: translateY(2px);
         }
 
+        /* CV Download Button */
+        .cv-button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .cv-button {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: #28a745;
+            border-radius: 30px;
+            text-decoration: none;
+            text-align: center;
+            width: auto;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cv-button:hover {
+            background-color: #218838;
+            transform: translateY(-5px);
+        }
+
+        .cv-button:active {
+            transform: translateY(2px);
+        }
+
         /* Media Query for Mobile Devices */
         @media (max-width: 768px) {
             .linkedin-link {
@@ -194,6 +222,11 @@
             .link-102 {
                 font-size: 16px;
                 padding: 10px;
+            }
+
+            .cv-button {
+                font-size: 16px;
+                padding: 12px 20px;
             }
         }
     </style>
@@ -225,6 +258,13 @@
     <div class="linkedin-card">
         <a href="https://www.linkedin.com/in/maheshkarandecr7/" target="_blank" class="linkedin-link">
             <i class="fab fa-linkedin"></i> Visit My LinkedIn Profile
+        </a>
+    </div>
+
+    <!-- CV Download Button -->
+    <div class="cv-button-container">
+        <a href="https://www.playbook.com/s/mk7/A3emPKJahL6RUAZm9AL7KPNS?assetToken=t3YSZ3tJMoAuuz86yMADyXJG" download class="cv-button">
+            Download My CV
         </a>
     </div>
 
