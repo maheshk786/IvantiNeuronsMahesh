@@ -261,6 +261,31 @@
                 height: 150px;
             }
         }
+           /* Footer Styles */
+    .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        font-size: 16px;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        background-color: #212121;
+        display: none; /* Hide by default */
+    }
+
+    .note {
+        font-size: 12px;
+        color: #ffcc00; /* Yellow color for the note */
+        font-style: italic;
+    }
+
+    /* Show footer on desktop and laptop views */
+    @media (min-width: 768px) {
+        .footer {
+            display: block;
+        }
+    }
     </style>
 </head>
 <body>
@@ -324,4 +349,7 @@
   
   
 </body>
+<footer class="footer">
+    <p>&copy; 2025 Mahesh. All rights reserved. <span class="note">Optimized for Desktop/Laptop Viewing</span></p>
+</footer>
 </html>
