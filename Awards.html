@@ -178,13 +178,148 @@
             margin-right: 10px;      /* Space between the symbol and text */
         }
 
-        .parent-container {
+.parent-container {
   text-align: center;
+  margin-bottom: 40px;
 }
+
 .experience-card1 {
   display: inline-block;
+  background-color: #ffffff; /* solid white background */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* subtle shadow */
+  padding: 20px;
+  margin: 20px auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 540px;
+  overflow: hidden;
 }
+
+.experience-card1:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* deeper shadow on hover */
+}
+
+
+    .experience-card.awards-card {
+      position: relative;
+      padding: 20px 20px 30px;
+      background: #fff8e1;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      margin: 20px auto;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      width: fit-content;
+      max-width: 90%;
+      color: #333;
+      overflow: visible;
+    }
+
+    .rocket {
+      display: inline-block;
+      font-size: 2rem;
+      animation: rocketLaunch 2s ease-in-out infinite;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 15px;
+    }
+
+    @keyframes rocketLaunch {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .firework-container {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      width: 0;
+      height: 0;
+      z-index: 1;
+    }
+
+    .firework {
+      width: 6px;
+      height: 6px;
+      background: gold;
+      border-radius: 50%;
+      position: absolute;
+      animation: explode 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--x), var(--y));
+        opacity: 0;
+      }
+    }
+
+    .awards-list {
+      margin-top: 20px;
+      padding-left: 20px;
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: left;
+      position: relative;
+      z-index: 2;
+      color: #333;
+    }osition: relative;
+}
+
+/* Responsive iframe inside cards */
+    iframe {
+      max-width: 100%;
+      border: none;
+      border-radius: 12px;
+      display: block;
+      margin: 0 auto;
+    }
     </style>
+      <script>
+    // Wait for DOM content before starting fireworks interval
+    document.addEventListener('DOMContentLoaded', () => {
+      function createFirework() {
+        const container = document.querySelector('.firework-container');
+        if (!container) return;
+
+        for (let i = 0; i < 12; i++) {
+          const fw = document.createElement('div');
+          fw.classList.add('firework');
+
+          const angle = Math.random() * 2 * Math.PI;
+          const distance = Math.random() * 40 + 20;
+
+          const x = Math.cos(angle) * distance + 'px';
+          const y = Math.sin(angle) * distance + 'px';
+
+          fw.style.setProperty('--x', x);
+          fw.style.setProperty('--y', y);
+
+          container.appendChild(fw);
+
+          setTimeout(() => fw.remove(), 1000);
+        }
+      }
+
+      setInterval(createFirework, 3000);
+    });
+  </script>
+
 </head>
 <body>
 
@@ -230,20 +365,24 @@
 </div>
 
     <!-- Experience Cards Section -->
-    <div class="experience-card">
-      
-        <ol>
-            <li>🏆 Allscripts Recognition GEM Award</li>
-            <li>🎯 Result Focus Award</li>
-            <li>💡 I Innovate Award</li>
-            <li>👏 Bravo Award</li>
-            <li>🖥️ Hackathon Certification</li>
-            <li>🔧 SAM Tool Excellence Award</li>
-            <li>🌟 Customer Hero Award (x2)</li>
-            <li>🌍 Customer Impact Award (x2)</li>
-            
-        </ol>
-    </div>
+<section class="experience-card awards-card" aria-label="Awards and honors">
+    <span class="rocket" aria-hidden="true">🚀</span>
+    <div class="firework-container" aria-hidden="true"></div>
+    <ol class="awards-list">
+    <li>🏆 Allscripts Recognition GEM Award</li>
+    <li>🎯 Result Focus Award</li>
+    <li>💡 I Innovate Award</li>
+    <li>👏 Bravo Award</li>
+    <li>🖥️ Hackathon Certification</li>
+    <li>🔧 SAM Tool Excellence Award</li>
+    <li>🌟 Customer Hero Award (x2)</li>
+    <li>🌍 Customer Impact Award (x2)</li>
+  </ol>
+</div>
+ </section>
+
+
+
 
     <div class="parent-container">
   <div class="experience-card1">
