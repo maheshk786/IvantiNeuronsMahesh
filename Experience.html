@@ -1,18 +1,41 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experience</title>
-    <!-- Include Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <!-- Include JQuery and Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <meta name="description"
+        content="Professional Experience - Mahesh Karande, Ivanti Neurons Specialist with 8+ years in ITSM, ITAM & Discovery">
+    <meta name="keywords" content="Ivanti Experience, ITSM Expert, ITAM Specialist, Mahesh Karande Career">
+    <title>Professional Experience - Mahesh Karande | Ivanti Neurons Specialist</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
 
     <style>
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #1a1a1a;
+            --card-bg: #2a2a2a;
+            --accent-color: #ffd700;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-muted: #999999;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --shadow-light: 0 4px 20px rgba(255, 215, 0, 0.1);
+            --shadow-heavy: 0 10px 40px rgba(0, 0, 0, 0.3);
+            --border-radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -20,279 +43,713 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: #212121; /* Matte black background */
-            color: white;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Header Image */
-        .header-img {
-            width: 70px;
-            position: absolute;
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* Header Logo */
+        .header-logo {
+            position: fixed;
             top: 20px;
             left: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            z-index: 1000;
         }
 
-        /* Experience Section */
-        .skills-card-section {
+        .header-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        /* Navigation */
+        .navbar-custom {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+            z-index: 999;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-link:hover::before {
+            left: 0;
+        }
+
+        .nav-link.active {
+            background: var(--gradient-primary);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero-section {
             text-align: center;
-            margin-top: 60px;
-            padding-bottom: 60px; /* Space for the fixed nav at the bottom */
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .skills-card-section h2 {
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-        .skills-card-section p {
-            font-size: 18px;
-            max-width: 800px;
-            margin: 20px auto;
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
         }
 
         .hover-underline {
-  font-size: 2rem;
-  color: #ffffff;
-  position: relative;
-  display: inline-block;
-}
-
-.hover-underline::after,
-.hover-underline::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(to right, #ff0000, #00ffff);
-  bottom: -5px;
-  left: 0;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.4s ease-out;
-}
-
-.hover-underline::before {
-  top: -5px;
-  transform-origin: left;
-}
-
-.hover-underline:hover::after,
-.hover-underline:hover::before {
-  transform: scaleX(1);
-}
-
-        /* Experience Cards */
-       /* Experience Cards */
-.experience-card {
-    background-color: #333;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 800px;
-    width: 90%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: visible; /* Ensure that the content is not cut off */
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    min-height: auto; /* Let the card height adjust based on content */
-}
-
-/* Avoid text overflow */
-.experience-card h3, .experience-card p, .experience-card ol {
-    overflow-wrap: break-word;
-}
-
-/* Optional: To ensure that the text within the list does not get cut off */
-.experience-card ol {
-    margin-left: 20px;
-    padding-left: 20px;
-    overflow: visible;
-}
-
-
-        .experience-card p {
-            font-size: 18px;
-            color: #ddd;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            transition: var(--transition);
         }
 
-        .experience-card ul {
-            list-style-type: none;
-            padding: 0;
-            color: #ccc;
+        .hover-underline::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -10px;
+            left: 50%;
+            background: var(--gradient-accent);
+            transition: all 0.4s ease;
+            border-radius: 2px;
+            transform: translateX(-50%);
         }
 
-        .experience-card ul li {
-            font-size: 16px;
-            margin: 5px 0;
+        .hover-underline:hover::after {
+            width: 100%;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Experience Timeline */
+        .experience-timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-primary);
+            transform: translateX(-50%);
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 60px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .experience-item:nth-child(odd) {
+            animation-delay: 0.2s;
+        }
+
+        .experience-item:nth-child(even) {
+            animation-delay: 0.4s;
+        }
+
+        .experience-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin: 0 auto;
+            max-width: 450px;
+            box-shadow: var(--shadow-heavy);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
         }
 
         .experience-card:hover {
-            background-color: #444; /* Darken the background on hover */
-            transform: scale(1.05); /* Slightly enlarge the card on hover */
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-color);
         }
 
-        /* Navigation Menu */
-        nav {
-            position: absolute;
-            top: 20px;
-            right: 0;
-            left: 0; /* Stretch across the screen */
-            text-align: center; /* Center the links horizontally */
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .company-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 10px;
             display: flex;
-            justify-content: center; /* Center the links inside the ul */
-            gap: 20px;
+            align-items: center;
+            gap: 10px;
         }
 
-        .link-102 {
-            color: #ffffff;
-            font-size: 20px;
-            text-decoration: none;
-            padding: 10px 20px;
-            transition: transform 0.3s, color 0.3s;
+        .position {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
         }
 
-        .link-102:hover {
-            transform: scale(1.07);
-            color: yellow;
+        .dates {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .uleffect {
-            list-style-type: none;  /* Remove default bullets */
-            padding-left: 20px;      /* Add padding to left */
+        .responsibilities {
+            list-style: none;
+            padding: 0;
         }
 
-        /* Add custom symbol before each list item */
-        .uleffect li::before {
-            content: "→";            /* The custom symbol */
-            color: yellow;           /* Color of the symbol */
-            font-size: 20px;         /* Size of the symbol */
-            margin-right: 10px;      /* Space between the symbol and text */
+        .responsibilities li {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .responsibilities li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            top: 2px;
+        }
+
+        .responsibilities li:hover {
+            color: var(--text-primary);
+            transform: translateX(5px);
+            transition: var(--transition);
+        }
+
+        /* Timeline Dots */
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            width: 16px;
+            height: 16px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            z-index: 10;
+        }
+
+        /* Alternating Layout */
+        .experience-item:nth-child(odd) .experience-card {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .experience-item:nth-child(even) .experience-card {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            margin: 3px 0;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .experience-card {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .nav-container {
+                position: relative;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 90px);
+                background: rgba(26, 26, 26, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+                gap: 20px;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-link {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+                width: 80%;
+                text-align: center;
+                border-radius: 10px;
+            }
+
+            .experience-timeline::before {
+                left: 30px;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .experience-card {
+                max-width: 100%;
+                margin-left: 60px !important;
+                margin-right: 20px !important;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding-top: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .experience-card {
+                padding: 20px;
+                margin-left: 50px !important;
+            }
+
+            .company-name {
+                font-size: 1.3rem;
+            }
+
+            .responsibilities li {
+                font-size: 0.9rem;
+            }
+
+            .nav-link {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero-title {
+                font-size: 1.6rem;
+            }
+
+            .experience-card {
+                padding: 15px;
+                margin-left: 45px !important;
+            }
+
+            .company-name {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
+
 <body>
+    <!-- Header Logo -->
+    <img src="/incsm.png" class="header-logo" alt="Mahesh Karande - Ivanti Neurons Specialist">
 
-    <!-- Landing Page Content -->
-    <img src="/incsm.png" alt="Description of the image"style="float: left; margin-right: 10px;" alt="Ivanti Neurons" class="header-img">
+    <!-- Navigation -->
+    <nav class="navbar-custom">
+        <div class="nav-container">
+            <button class="mobile-menu-toggle" type="button" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="/Index.html" class="nav-link">Home</a></li>
+                <li><a href="/Skill.html" class="nav-link">Skills</a></li>
+                <li><a href="/Experience.html" class="nav-link active" aria-current="page">Experience</a></li>
+                <li><a href="/CoverLetter.html" class="nav-link">Cover Letter</a></li>
+                <li><a href="/Certificate.html" class="nav-link">Certificates</a></li>
+                <li><a href="/Awards.html" class="nav-link">Awards</a></li>
+                <li><a href="https://bit.ly/MaheshIvanti" class="nav-link" target="_blank"
+                        rel="noopener noreferrer">Projects</a></li>
+                <li><a href="/Contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
- <!-- Navigation Menu -->
- <nav>
-    <ul>
-        <li><a href="/Index.html" class="link-102">Home</a></li>
-        <li><a href="/Skill.html" class="link-102">Skill</a></li>
-        <li><a href="/Experience.html" class="link-102">Experience</a></li>
-        <li><a href="/CoverLetter.html" class="link-102">Cover Letter</a></li>
-        <li><a href="/Certificate.html" class="link-102">Certificate</a></li>
-        <li><a href="/Awards.html" class="link-102">Awards</a></li>
-        <li><a href="https://bit.ly/MaheshIvanti" class="link-102" target="_blank">Projects</a></li>
-        <li><a href="/Contact.html" class="link-102">Contact</a></li>
-
-    </ul>
-</nav>
-
-    <!-- Skills and Experience Section -->
-    <div class="skills-card-section">
-        <br> 
-        <h2> <div class="hover-underline">Experience</div></h2>
-        <br> 
-        <p>With extensive experience in ITSM and ITAM, I have honed my technical skills over the years, specialising in Ivanti and its integrations. These tools and technologies enable me to optimise workflows, automate processes, and develop efficient solutions that drive business success.</p>
-    </div>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="hero-title">
+                <span class="hover-underline">Professional Experience</span>
+            </h1>
+            <p class="hero-description">
+                With extensive experience in ITSM and ITAM, I have honed my technical skills over the years,
+                specializing in Ivanti and its integrations.
+                These tools and technologies enable me to optimize workflows, automate processes, and develop efficient
+                solutions that drive business success.
+            </p>
+        </section>
 
 
 
-    <!-- Experience Cards Section -->
-    <div class="experience-card">
-        <h3>Hadron GBS</h3>
-        <p><strong>Position:</strong>Specialist Ivanti Admin</p>
-        <p><strong>Dates:</strong> 01/2024 – Present</p>
-        <ol>
-<li>Designed, configured, and maintained the Ivanti Neurons ITSM platform, supporting key IT service management processes including Incident, Request, Problem, Change, Service Catalog, and Asset Management.</li>
-<li>Customized Ivanti ITSM modules to meet client-specific needs across the US, APAC, EMEA, and Europe—optimizing workflows, forms, templates, and business reports to enhance service delivery.</li>
-<li>Integrated Ivanti with external platforms such as ServiceNow (via REST APIs), Azure Active Directory, and SSO, ensuring seamless data flow and authentication across systems.</li>
-<li>Developed and automated workflows, reports, and templates within Ivanti Neurons to streamline CMDB, CI creation, and approval processes.</li>
-<li>Managed user roles, access, and permissions in Ivanti, maintaining data security and integrity through LDAP and Azure AD synchronization.</li>
-<li>Led end-to-end implementations of Ivanti ITSM solutions—both cloud-based and on-premises—ensuring scalability and strong performance.</li>
-<li>Monitored and improved platform performance, resolved logic issues, and earned client praise for increasing system reliability and support efficiency.</li>
-<li>Worked closely with cross-functional teams to identify automation opportunities and align ITSM processes with ITIL standards for incident, problem, and change management.</li>
-<li>Provided end-user training and support, authored user guides and SOPs, and promoted self-service adoption across teams.</li>
-<li>Handled upgrades, release testing, and continuous tuning of the Ivanti Neurons platform to ensure system stability and responsiveness.</li>
-<li>Hands-on experience with Ivanti Neurons for Discovery, agent deployment, patch installation, application distribution, and bundle creation—supporting endpoint visibility and operational control.</li>
+        <!-- Experience Timeline -->
+        <section class="experience-timeline">
+            <!-- Hadron GBS -->
+            <article class="experience-item">
+                <div class="timeline-dot"></div>
+                <div class="experience-card">
+                    <h3 class="company-name">
+                        <i class="fas fa-building"></i>
+                        Hadron GBS
+                    </h3>
+                    <p class="position">Specialist Ivanti Admin</p>
+                    <p class="dates">
+                        <i class="fas fa-calendar-alt"></i>
+                        January 2024 – Present
+                    </p>
+                    <ul class="responsibilities">
+                        <li>Designed, configured, and maintained the Ivanti Neurons ITSM platform, supporting key IT
+                            service management processes including Incident, Request, Problem, Change, Service Catalog,
+                            and Asset Management</li>
+                        <li>Customized Ivanti ITSM modules to meet client-specific needs across the US, APAC, EMEA, and
+                            Europe—optimizing workflows, forms, templates, and business reports to enhance service
+                            delivery</li>
+                        <li>Integrated Ivanti with external platforms such as ServiceNow (via REST APIs), Azure Active
+                            Directory, and SSO, ensuring seamless data flow and authentication across systems</li>
+                        <li>Developed and automated workflows, reports, and templates within Ivanti Neurons to
+                            streamline CMDB, CI creation, and approval processes</li>
+                        <li>Managed user roles, access, and permissions in Ivanti, maintaining data security and
+                            integrity through LDAP and Azure AD synchronization</li>
+                        <li>Led end-to-end implementations of Ivanti ITSM solutions—both cloud-based and
+                            on-premises—ensuring scalability and strong performance</li>
+                        <li>Monitored and improved platform performance, resolved logic issues, and earned client praise
+                            for increasing system reliability and support efficiency</li>
+                        <li>Worked closely with cross-functional teams to identify automation opportunities and align
+                            ITSM processes with ITIL standards</li>
+                        <li>Provided end-user training and support, authored user guides and SOPs, and promoted
+                            self-service adoption across teams</li>
+                        <li>Handled upgrades, release testing, and continuous tuning of the Ivanti Neurons platform to
+                            ensure system stability and responsiveness</li>
+                        <li>Hands-on experience with Ivanti Neurons for Discovery, agent deployment, patch installation,
+                            application distribution, and bundle creation</li>
+                    </ul>
+                </div>
+            </article>
 
-        </ol>
-    </div>
+            <!-- Medline Inc -->
+            <article class="experience-item">
+                <div class="timeline-dot"></div>
+                <div class="experience-card">
+                    <h3 class="company-name">
+                        <i class="fas fa-building"></i>
+                        Medline Inc
+                    </h3>
+                    <p class="position">Heat Admin/Ivanti Admin/Developer</p>
+                    <p class="dates">
+                        <i class="fas fa-calendar-alt"></i>
+                        February 2019 – December 2023
+                    </p>
+                    <ul class="responsibilities">
+                        <li>Developed and maintained the Asset Verification Portal for Medline India using Java,
+                            JavaScript, MySQL, and Tomcat</li>
+                        <li>Upgraded the ISM production environment and implemented Twilio automation for SMS
+                            communication, enhancing user engagement and incident resolution processes</li>
+                        <li>Integrated Security Incident Management (SecOps) within ISM to efficiently handle
+                            security-related incidents and improve response times</li>
+                        <li>Automated manager approval workflows and performed bulk Service Request (SR) uploads using
+                            PowerShell and XML scripts</li>
+                        <li>Tested and optimized REST API connections for system integrations using Postman to ensure
+                            seamless connectivity and functionality</li>
+                        <li>Provided Jira support for project tracking, handled bug resolutions, and managed backlogs to
+                            ensure timely delivery of project milestones</li>
+                        <li>Enhanced workflows, business rules, and user permissions within Ivanti Service Management
+                            (ISM), resulting in increased system efficiency</li>
+                        <li>Utilized Ivanti ticketing system to log, track, and manage incidents, ensuring detailed
+                            documentation and prompt resolution</li>
+                        <li>Managed Ivanti Configuration Items (CI) and the Configuration Management Database (CMDB)
+                        </li>
+                        <li>Administered Ivanti Access, managing user access, permissions, and security configurations
+                            for end-user computing devices</li>
+                        <li>Applied Ivanti Quick Actions and workflows to automate and streamline incident management,
+                            improving operational efficiency</li>
+                        <li>Developed and implemented Ivanti Business Rules to optimize workflow processes and enhance
+                            ticketing accuracy</li>
+                        <li>Created Service Catalogs and complex workflows within Ivanti to ensure seamless service
+                            request handling</li>
+                        <li>Managed and maintained both Application Servers and Database Servers, ensuring high
+                            availability, performance, and security</li>
+                    </ul>
+                </div>
+            </article>
 
-    <div class="experience-card">
-        <h3>Medline Inc</h3>
-        <p><strong>Position:</strong> Heat Admin/Ivanti Admin/Developer</p>
-        <p><strong>Dates:</strong> 02/2019 – 12/2023</p>
-        <ol>
-            <li>Developed and maintained the Asset Verification Portal for Medline India using Java, JavaScript, MySQL, and Tomcat.</li>
-            <li>Upgraded the ISM production environment and implemented Twilio automation for SMS communication, enhancing user engagement and incident resolution processes.</li>
-            <li>Integrated Security Incident Management (SecOps) within ISM to efficiently handle security-related incidents and improve response times.</li>
-            <li>Automated manager approval workflows and performed bulk Service Request (SR) uploads using PowerShell and XML scripts, streamlining processes and reducing manual intervention.</li>
-            <li>Tested and optimized REST API connections for system integrations using Postman to ensure seamless connectivity and functionality.</li>
-            <li>Provided Jira support for project tracking, handled bug resolutions, and managed backlogs to ensure timely delivery of project milestones.</li>
-            <li>Enhanced workflows, business rules, and user permissions within Ivanti Service Management (ISM), resulting in increased system efficiency and better user experience.</li>
-            <li>Utilized Ivanti ticketing system to log, track, and manage incidents, ensuring detailed documentation and prompt resolution of service requests.</li>
-            <li>Managed Ivanti Configuration Items (CI) and the Configuration Management Database (CMDB), ensuring accurate tracking and management of assets and services.</li>
-            <li>Administered Ivanti Access, managing user access, permissions, and security configurations for end-user computing devices, ensuring proper security controls.</li>
-            <li>Applied Ivanti Quick Actions and workflows to automate and streamline incident management, improving operational efficiency and reducing response times.</li>
-            <li>Developed and implemented Ivanti Business Rules to optimize workflow processes and enhance ticketing accuracy.</li>
-            <li>Created Service Catalogs and complex workflows within Ivanti to ensure seamless service request handling and enhance end-user support.</li>
-            <li>Managed and maintained both Application Servers and Database Servers, ensuring high availability, performance, and security of critical systems and data.</li>
-        </ol>
-    </div>
+            <!-- Teamware Solutions -->
+            <article class="experience-item">
+                <div class="timeline-dot"></div>
+                <div class="experience-card">
+                    <h3 class="company-name">
+                        <i class="fas fa-building"></i>
+                        Teamware Solutions
+                    </h3>
+                    <p class="position">Senior Analyst Ivanti Admin</p>
+                    <p class="dates">
+                        <i class="fas fa-calendar-alt"></i>
+                        February 2019 – October 2020
+                    </p>
+                    <ul class="responsibilities">
+                        <li>Utilized Ivanti ticketing system to log, track, and manage incidents, ensuring detailed
+                            documentation and timely resolution</li>
+                        <li>Handled Ivanti Configuration Items (CI) and Configuration Management Database (CMDB),
+                            ensuring accurate tracking and management</li>
+                        <li>Administered Ivanti Access, managing user access, permissions, and security configurations
+                            for end-user computing devices</li>
+                        <li>Applied Ivanti Quick Actions and workflows to automate and streamline incident management
+                            processes</li>
+                        <li>Developed and implemented Ivanti Business Rules to optimize workflow processes and enhance
+                            ticketing accuracy</li>
+                        <li>Created Service Catalogs and complex workflows within Ivanti to ensure seamless service
+                            request handling</li>
+                        <li>Managed and maintained both Application Servers and Database Servers, ensuring high
+                            availability and performance</li>
+                        <li>Managed and supported desktop support and helpdesk services, overseeing hardware and
+                            application troubleshooting</li>
+                        <li>Ensured the monitoring, management, and restoration of end-user computing devices</li>
+                        <li>Managed Active Directory (AD) tasks such as user account resets, creation, and management
+                        </li>
+                    </ul>
+                </div>
+            </article>
 
- <div class="experience-card">
-        <h3>Teamware Solutions</h3>
-        <p><strong>Position:</strong>Senior Analyst Ivanti Admin</p>
-        <p><strong>Dates:</strong> 02/2019 – 10/2020 </p>
-        <ol>
-             <li>Utilized Ivanti ticketing system to log, track, and manage incidents, ensuring detailed documentation and timely resolution of service requests.</li>
-    <li>Handled Ivanti Configuration Items (CI) and Configuration Management Database (CMDB), ensuring accurate tracking and management of assets and services.</li>
-    <li>Administered Ivanti Access, managing user access, permissions, and security configurations for end-user computing devices.</li>
-    <li>Applied Ivanti Quick Actions and workflows to automate and streamline incident management processes, improving operational efficiency.</li>
-    <li>Developed and implemented Ivanti Business Rules to optimize workflow processes and enhance ticketing accuracy.</li>
-    <li>Created Service Catalogs and complex workflows within Ivanti to ensure seamless service request handling and effective end-user support.</li>
-    <li>Managed and maintained both Application Servers and Database Servers, ensuring high availability, performance, and security of critical systems and data.</li>
-    <li>Managed and supported desktop support and helpdesk services, overseeing hardware and application troubleshooting, as well as providing user support.</li>
-    <li>Ensured the monitoring, management, and restoration of end-user computing devices, escalating issues to Desktop Support Engineers when necessary.</li>
-    <li>Managed Active Directory (AD) tasks such as user account resets, creation, and management, ensuring proper access and security protocols.</li>
-        </ol>
-    </div>
+            <!-- Allscripts -->
+            <article class="experience-item">
+                <div class="timeline-dot"></div>
+                <div class="experience-card">
+                    <h3 class="company-name">
+                        <i class="fas fa-building"></i>
+                        Allscripts
+                    </h3>
+                    <p class="position">Helpdesk Domain - Ivanti Admin</p>
+                    <p class="dates">
+                        <i class="fas fa-calendar-alt"></i>
+                        May 2017 – December 2018
+                    </p>
+                    <ul class="responsibilities">
+                        <li>Created and managed tasks within Ivanti to streamline issue resolution and improve incident
+                            management processes</li>
+                        <li>Managed the Application Server and Database Server with focus on performance and reliability
+                        </li>
+                        <li>Troubleshot desktop, printer, and Allscripts application issues, providing efficient
+                            resolutions</li>
+                        <li>Utilized Ivanti ticketing system to log, track, and manage incidents with proper
+                            documentation</li>
+                        <li>Achieved a 91% first-call resolution rate by troubleshooting issues effectively and
+                            escalating when necessary</li>
+                        <li>Documented all incidents in systems such as Remedy, ServiceNow, and Ivanti with detailed
+                            comments and timely updates</li>
+                        <li>Provided independent support for GW and CHI clients, resolving technical issues through
+                            thorough research</li>
+                        <li>Managed shared mailboxes and collaborated with the onsite team to resolve tickets and emails
+                            efficiently</li>
+                        <li>Performed Active Directory tasks, including account resets, profile creation, and user
+                            account management</li>
+                        <li>Gained knowledge of AEHR and PPMS systems to provide comprehensive user support and
+                            troubleshooting</li>
+                        <li>Delivered password resets, break fixes, printer support, and network connectivity
+                            troubleshooting</li>
+                        <li>Maintained strong communication with customers, ensuring complete problem resolution and
+                            status updates</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+    </main>
 
-    <div class="experience-card">
-        <h3>Allscripts</h3>
-        <p><strong>Position:</strong>Helpdesk Domain - Ivanti Admin</p>
-        <p><strong>Dates:</strong> 05/2017 – 12/2018</p>
-        <ol>
-           <li>Created and managed tasks within Ivanti to streamline issue resolution and improve incident management processes.</li>
-    <li>Managed the Application Server and Database Server.</li>
-    <li>Troubleshot desktop, printer, and Allscripts application issues, providing efficient resolutions.</li>
-    <li>Utilized Ivanti ticketing system to log, track, and manage incidents, ensuring proper documentation and timely resolution of service requests.</li>
-    <li>Achieved a 91% first-call resolution rate by troubleshooting issues effectively and escalating to second-level support when necessary.</li>
-    <li>Documented all incidents in systems such as Remedy, ServiceNow, and Ivanti, ensuring detailed comments and timely updates on status.</li>
-    <li>Provided independent support for GW and CHI clients, resolving technical issues through thorough research and customer-focused communication.</li>
-    <li>Managed shared mailboxes and collaborated with the onsite team to resolve tickets and emails efficiently.</li>
-    <li>Performed Active Directory tasks, including account resets, profile creation, MS4 resets, and enabling/disabling user accounts.</li>
-    <li>Gained basic knowledge of AEHR and PPMS systems to provide user support and troubleshooting.</li>
-    <li>Delivered password resets, break fixes, printer support, and network connectivity troubleshooting.</li>
-    <li>Maintained strong communication with customers, notifying them of issue status and ensuring complete problem resolution.</li>
-        </ol>
-    </div>
 
-    <!-- Navigation Menu -->
-    
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileToggle && navLinks) {
+                mobileToggle.addEventListener('click', function() {
+                    mobileToggle.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
 
+                // Close menu when clicking on a link
+                const navLinkItems = document.querySelectorAll('.nav-link');
+                navLinkItems.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileToggle.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!mobileToggle.contains(event.target) && !navLinks.contains(event.target)) {
+                        mobileToggle.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
