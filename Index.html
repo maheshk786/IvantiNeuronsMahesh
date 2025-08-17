@@ -219,7 +219,7 @@
 
     .cta-section {
       display: flex;
-      gap: 20px;
+      gap: 15px;
       align-items: center;
       margin: 30px 0;
       flex-wrap: wrap;
@@ -241,6 +241,32 @@
       transform: translateY(-3px);
       box-shadow: var(--shadow-heavy);
       color: white;
+    }
+
+    .btn-feedback {
+      background: var(--gradient-secondary);
+      border: none;
+      padding: 12px 30px;
+      border-radius: 50px;
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 4px 20px rgba(240, 147, 251, 0.3);
+      display: inline-block;
+    }
+
+    .btn-feedback:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 40px rgba(240, 147, 251, 0.4);
+      color: white;
+    }
+
+    /* Ensure feedback button is visible */
+    .footer .btn-feedback {
+      visibility: visible !important;
+      opacity: 1 !important;
+      z-index: 999;
     }
 
     .social-links {
@@ -397,11 +423,346 @@
 
     /* Footer */
     .footer {
-      background: var(--secondary-bg);
+      position: relative;
+      background: linear-gradient(to bottom, #87CEEB 0%, #98D8E8 30%, #2F4F4F 70%, #1a1a1a 100%);
       text-align: center;
-      padding: 30px 20px;
+      padding: 80px 20px 30px;
       border-top: 1px solid rgba(255, 215, 0, 0.1);
       margin-top: 60px;
+      overflow: hidden;
+      min-height: 300px;
+    }
+
+    /* Snow Mountains */
+    .mountains {
+      position: absolute;
+      bottom: 120px;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(45deg, #ffffff 0%, #f0f8ff 50%, #e6f3ff 100%);
+      clip-path: polygon(0% 100%, 15% 60%, 25% 80%, 35% 40%, 50% 70%, 65% 30%, 80% 60%, 90% 45%, 100% 80%, 100% 100%);
+      z-index: 1;
+    }
+
+    /* Highway */
+    .highway {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(to bottom, #4a4a4a 0%, #2a2a2a 100%);
+      z-index: 2;
+    }
+
+    .highway::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: repeating-linear-gradient(to right,
+          #ffff00 0px,
+          #ffff00 30px,
+          transparent 30px,
+          transparent 60px);
+      animation: roadLines 3s linear infinite;
+    }
+
+    /* Cars Animation */
+    .cars-container {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      z-index: 3;
+    }
+
+    .car {
+      position: absolute;
+      width: 100px;
+      height: 45px;
+      background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+      border-radius: 25px 25px 8px 8px;
+      animation: moveCar 8s linear infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 11px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .car:nth-child(1)::after {
+      content: 'ITSM';
+    }
+
+    .car:nth-child(2) {
+      background: linear-gradient(45deg, #4ecdc4, #44a08d);
+      animation-delay: -2s;
+      animation-duration: 10s;
+      bottom: 10px;
+    }
+
+    .car:nth-child(2)::after {
+      content: 'ITAM';
+    }
+
+    .car:nth-child(3) {
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      animation-delay: -4s;
+      animation-duration: 12s;
+      width: 110px;
+    }
+
+    .car:nth-child(3)::after {
+      content: 'API';
+    }
+
+    .car:nth-child(4) {
+      background: linear-gradient(45deg, #ffd700, #ffb347);
+      animation-delay: -6s;
+      animation-duration: 14s;
+      width: 120px;
+      bottom: 5px;
+    }
+
+    .car:nth-child(4)::after {
+      content: 'Web Script';
+      font-size: 10px;
+    }
+
+    /* Trunk Car with All Labels */
+    .trunk-car {
+      position: absolute;
+      width: 140px;
+      height: 50px;
+      background: linear-gradient(45deg, #2c3e50, #34495e);
+      border-radius: 30px 30px 10px 10px;
+      animation: moveCar 16s linear infinite;
+      animation-delay: -8s;
+      bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 9px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .trunk-car::after {
+      content: 'ITSM•ITAM•API•WebScript';
+      letter-spacing: 0.5px;
+    }
+
+    .car::before, .trunk-car::before {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 15px;
+      width: 14px;
+      height: 14px;
+      background: #222;
+      border-radius: 50%;
+      box-shadow: 60px 0 0 #222;
+    }
+
+    .trunk-car::before {
+      box-shadow: 80px 0 0 #222;
+    }
+
+    /* IT Company Logos */
+    .it-logos {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      z-index: 4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 80px;
+      animation: floatLogos 6s ease-in-out infinite;
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+      padding: 10px;
+    }
+
+    .logo:hover {
+      transform: scale(1.15) rotate(5deg);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .logo-icon {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .logo.ivanti {
+      background: linear-gradient(45deg, #ffffff, #f8f9fa);
+    }
+
+    .logo.microsoft {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 15px;
+    }
+
+    /* Snow Effect */
+    .snow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .snowflake {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1em;
+      animation: snowfall 10s linear infinite;
+    }
+
+    .snowflake:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
+      animation-duration: 8s;
+    }
+
+    .snowflake:nth-child(2) {
+      left: 20%;
+      animation-delay: 1s;
+      animation-duration: 10s;
+    }
+
+    .snowflake:nth-child(3) {
+      left: 30%;
+      animation-delay: 2s;
+      animation-duration: 12s;
+    }
+
+    .snowflake:nth-child(4) {
+      left: 40%;
+      animation-delay: 3s;
+      animation-duration: 9s;
+    }
+
+    .snowflake:nth-child(5) {
+      left: 50%;
+      animation-delay: 4s;
+      animation-duration: 11s;
+    }
+
+    .snowflake:nth-child(6) {
+      left: 60%;
+      animation-delay: 5s;
+      animation-duration: 8s;
+    }
+
+    .snowflake:nth-child(7) {
+      left: 70%;
+      animation-delay: 6s;
+      animation-duration: 10s;
+    }
+
+    .snowflake:nth-child(8) {
+      left: 80%;
+      animation-delay: 7s;
+      animation-duration: 12s;
+    }
+
+    .snowflake:nth-child(9) {
+      left: 90%;
+      animation-delay: 8s;
+      animation-duration: 9s;
+    }
+
+    /* Footer Content */
+    .footer-content {
+      position: relative;
+      z-index: 6;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+
+    .footer-feedback {
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .footer .btn-feedback {
+      display: inline-block;
+      margin: 0 auto;
+    }
+
+    /* Animations */
+    @keyframes moveCar {
+      0% {
+        transform: translateX(-100px);
+      }
+
+      100% {
+        transform: translateX(calc(100vw + 100px));
+      }
+    }
+
+    @keyframes roadLines {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(60px);
+      }
+    }
+
+    @keyframes floatLogos {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes snowfall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(400px) rotate(360deg);
+        opacity: 0;
+      }
     }
 
     .footer-text {
@@ -569,6 +930,60 @@
         font-size: 1rem;
       }
     }
+
+    /* Mobile Footer Responsive */
+    @media (max-width: 768px) {
+      .footer {
+        min-height: 250px;
+        padding: 60px 10px 20px;
+      }
+
+      .it-logos {
+        gap: 40px;
+        height: 70px;
+        top: 10px;
+      }
+
+      .logo {
+        width: 60px;
+        height: 60px;
+        padding: 8px;
+      }
+
+      .car {
+        width: 80px;
+        height: 35px;
+        font-size: 9px;
+      }
+
+      .car:nth-child(3) {
+        width: 90px;
+      }
+
+      .car:nth-child(4) {
+        width: 100px;
+      }
+
+      .trunk-car {
+        width: 120px;
+        height: 40px;
+        font-size: 8px;
+      }
+
+      .mountains {
+        height: 100px;
+        bottom: 80px;
+      }
+
+      .highway {
+        height: 80px;
+      }
+
+      .cars-container {
+        bottom: 20px;
+        height: 40px;
+      }
+    }
   </style>
 </head>
 
@@ -626,7 +1041,8 @@
 
         <!-- Call to Action -->
         <div class="cta-section">
-          <a href="https://bit.ly/MaheshCV" class="btn-primary-custom" download aria-label="Download Mahesh's Resume">
+          <a href="https://bit.ly/MaheshCV" class="btn-primary-custom" target="_blank" rel="noopener noreferrer"
+            aria-label="Download Mahesh's Resume">
             <i class="fas fa-download me-2"></i>Download My CV
           </a>
 
@@ -647,7 +1063,8 @@
           <h5><i class="fas fa-star me-2"></i>Highlighted Work</h5>
           <ul>
             <li>Integrated Intune & CMDB via Web Scripting</li>
-           <li>Experienced in Ivanti Neurons Discovery, including Agent Policies, Patching, and Software Application Distribution</li>
+            <li>Experienced in Ivanti Neurons Discovery, including Agent Policies, Patching, and Software Application
+              Distribution</li>
             <li>Built cross-platform dashboards (Ivanti + Scripting)</li>
             <li>Automated ITSM/ITAM workflows for 32+ global clients</li>
           </ul>
@@ -670,11 +1087,63 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="footer-text">
-      &copy; 2025 Mahesh Karande. All rights reserved.
+    <!-- Snow Mountains Background -->
+    <div class="mountains"></div>
+
+    <!-- Highway -->
+    <div class="highway"></div>
+
+    <!-- Animated Cars -->
+    <div class="cars-container">
+      <div class="car"></div>
+      <div class="car"></div>
+      <div class="car"></div>
+      <div class="car"></div>
+      <div class="trunk-car"></div>
     </div>
-    <div class="footer-note">
-      <i class="fas fa-desktop me-1"></i>Optimized for all devices
+
+    <!-- IT Company Logos -->
+    <div class="it-logos">
+      <div class="logo ivanti">
+        <img src="/attach/Ivanti_Log.png" alt="Ivanti" class="logo-icon">
+      </div>
+      <div class="logo microsoft">
+        <svg class="logo-icon" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h11v11H0V0z" fill="#f25022" />
+          <path d="M12 0h11v11H12V0z" fill="#7fba00" />
+          <path d="M0 12h11v11H0V12z" fill="#00a4ef" />
+          <path d="M12 12h11v11H12V12z" fill="#ffb900" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Snow Effect -->
+    <div class="snow">
+      <div class="snowflake">❄</div>
+      <div class="snowflake">❅</div>
+      <div class="snowflake">❆</div>
+      <div class="snowflake">❄</div>
+      <div class="snowflake">❅</div>
+      <div class="snowflake">❆</div>
+      <div class="snowflake">❄</div>
+      <div class="snowflake">❅</div>
+      <div class="snowflake">❆</div>
+    </div>
+
+    <!-- Footer Content -->
+    <div class="footer-content">
+      <div class="footer-feedback">
+        <a href="https://forms.gle/Xjv1A5ve1C1F4xCT6" class="btn-feedback" target="_blank" rel="noopener noreferrer"
+          aria-label="Provide Feedback">
+          <i class="fas fa-comment-dots me-2"></i>Give Feedback
+        </a>
+      </div>
+      <div class="footer-text">
+        &copy; 2025 Mahesh Karande. All rights reserved.
+      </div>
+      <div class="footer-note">
+        <i class="fas fa-desktop me-1"></i>Optimized for all devices
+      </div>
     </div>
   </footer>
   <script>
