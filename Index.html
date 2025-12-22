@@ -674,21 +674,46 @@
       opacity: 1;
     }
 
-    .hero-mascots.sleeping {
-      opacity: 0.9;
+    /* Navigation Hover Expressions */
+    .hero-mascots.happy .mascot-orange {
+      transform: translateZ(35px) scale(1.05);
+    }
+    
+    .hero-mascots.focused .mascot-purple {
+      transform: translateZ(20px) scale(1.1);
+    }
+    
+    .hero-mascots.focused .mascot-purple .mascot-eye {
+      transform: scale(0.8);
+    }
+    
+    .hero-mascots.proud .mascot-yellow {
+      transform: translateZ(35px) scale(1.1);
+    }
+    
+    .hero-mascots.confident .mascot-black {
+      transform: translateZ(25px) scale(1.08);
+    }
+    
+    .hero-mascots.excited .mascot {
+      animation: bounce 0.6s ease-in-out infinite alternate;
+    }
+    
+    .hero-mascots.creative .mascot {
+      filter: hue-rotate(30deg) brightness(1.1);
+    }
+    
+    .hero-mascots.friendly .mascot-orange .mascot-eye,
+    .hero-mascots.friendly .mascot-yellow .mascot-eye {
+      transform: scale(1.2);
     }
 
-    .hero-mascots.sleeping .mascot-yellow .mascot-eye.yellow-eye {
-      width: 14px !important;
-      height: 3px !important;
-      background: #111;
-      border-radius: 999px;
-      top: 46px !important;
+    @keyframes bounce {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-10px); }
     }
 
-    .hero-mascots.sleeping .mascot-yellow .mascot-eye.yellow-eye .mascot-pupil {
-      opacity: 0;
-    }
+
 
     /* 3D cube */
     .box-card {
@@ -1586,6 +1611,7 @@
         <div class="highlights">
           <h5><i class="fas fa-star me-2"></i>Highlighted Work</h5>
           <ul>
+            <li>Cherwell Service Management Migration – Led comprehensive migration from Cherwell Service Management to Ivanti ITSM/Neurons platform. Executed data mapping, workflow transformation, and user training while ensuring zero downtime during transition. Created service catalog with 200+ standardized service offerings and automated request fulfillment processes</li>
             <li>Zebra Asset Scanner Integration – Implemented barcode/QR scanning solution integrating Zebra handheld scanners (TC series) with Ivanti ITSM/Neurons. Configured DataWedge profiles and custom asset forms to enable real-time asset updates via scanning, reducing manual entry and improving audit accuracy for field technicians</li>
             <li>CMDB Integration – Integrated Microsoft Intune with Ivanti Neurons Discovery CMDB using web scripting
               and Connection Apps, enabling unified visibility and management of mobile and endpoint assets</li>
@@ -1863,13 +1889,73 @@
       let lookAway = false;
       let keyBuffer = '';
       let lastUpdate = 0;
+      let isJumping = false;
 
-      const hour = new Date().getHours();
-      if (hour >= 22 || hour < 6) {
-        group.classList.add('sleeping');
-      } else {
-        group.classList.add('awake');
-      }
+      // Always keep mascots awake
+      group.classList.add('awake');
+
+      // Get all mascot elements
+      const mascots = group.querySelectorAll('.mascot');
+
+      // Add click interaction to each mascot
+      mascots.forEach((mascot, index) => {
+        mascot.style.cursor = 'pointer';
+        mascot.style.transition = 'transform 0.3s ease';
+        
+        mascot.addEventListener('click', function() {
+          if (isJumping) return;
+          isJumping = true;
+          
+          // Jump animation
+          const originalTransform = this.style.transform || '';
+          const currentZ = originalTransform.match(/translateZ\((\d+)px\)/);
+          const zValue = currentZ ? parseInt(currentZ[1]) : 0;
+          
+          this.style.transform = `translateZ(${zValue + 60}px) scale(1.2) rotate(${Math.random() * 20 - 10}deg)`;
+          
+          // Create emoji reaction
+          const emoji = ['🎉', '⭐', '💫', '✨', '🌟', '🎊'][Math.floor(Math.random() * 6)];
+          const reaction = document.createElement('div');
+          reaction.textContent = emoji;
+          reaction.style.cssText = `
+            position: absolute;
+            font-size: 2rem;
+            pointer-events: none;
+            animation: floatUp 1s ease-out forwards;
+            left: 50%;
+            top: -20px;
+            transform: translateX(-50%);
+          `;
+          this.appendChild(reaction);
+          
+          setTimeout(() => {
+            this.style.transform = originalTransform;
+            reaction.remove();
+            isJumping = false;
+          }, 600);
+        });
+        
+        // Hover effect
+        mascot.addEventListener('mouseenter', function() {
+          if (!isJumping) {
+            const originalTransform = this.style.transform || '';
+            const currentZ = originalTransform.match(/translateZ\((\d+)px\)/);
+            const zValue = currentZ ? parseInt(currentZ[1]) : 0;
+            this.style.transform = `translateZ(${zValue + 20}px) scale(1.1)`;
+          }
+        });
+        
+        mascot.addEventListener('mouseleave', function() {
+          if (!isJumping) {
+            const originalTransform = this.style.transform || '';
+            const match = originalTransform.match(/translateZ\((\d+)px\)/);
+            if (match) {
+              const zValue = parseInt(match[1]);
+              this.style.transform = `translateZ(${zValue - 20}px) scale(1)`;
+            }
+          }
+        });
+      });
 
       function updatePupils(e) {
         // Throttle updates for better performance
@@ -1877,7 +1963,7 @@
         if (now - lastUpdate < 16) return; // ~60fps
         lastUpdate = now;
 
-        if (lookAway || group.classList.contains('sleeping')) return;
+        if (lookAway || isJumping) return;
 
         eyes.forEach(eye => {
           const pupil = eye.querySelector('.mascot-pupil');
@@ -1910,6 +1996,72 @@
           group.classList.remove('look-away');
         }, 2000);
       }
+      
+      // Random blink animation
+      function randomBlink() {
+        if (isJumping || lookAway) return;
+        
+        const randomEye = eyes[Math.floor(Math.random() * eyes.length)];
+        if (randomEye) {
+          randomEye.style.transform = 'scaleY(0.1)';
+          setTimeout(() => {
+            randomEye.style.transform = 'scaleY(1)';
+          }, 150);
+        }
+      }
+      
+      // Blink every 3-5 seconds
+      setInterval(randomBlink, Math.random() * 2000 + 3000);
+      
+      // Navigation hover expressions
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      function setMascotExpression(keyword) {
+        // Remove any existing expression classes
+        group.classList.remove('excited', 'focused', 'happy', 'curious', 'proud', 'confident', 'creative', 'friendly');
+        
+        switch(keyword.toLowerCase()) {
+          case 'home':
+            group.classList.add('happy');
+            break;
+          case 'skills':
+            group.classList.add('focused');
+            break;
+          case 'experience':
+            group.classList.add('proud');
+            break;
+          case 'cover letter':
+            group.classList.add('confident');
+            break;
+          case 'certificates':
+            group.classList.add('excited');
+            break;
+          case 'awards':
+            group.classList.add('proud');
+            break;
+          case 'projects':
+            group.classList.add('creative');
+            break;
+          case 'contact':
+            group.classList.add('friendly');
+            break;
+        }
+      }
+      
+      function resetMascotExpression() {
+        group.classList.remove('excited', 'focused', 'happy', 'curious', 'proud', 'confident', 'creative', 'friendly');
+      }
+      
+      navLinks.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+          const linkText = this.textContent.trim();
+          setMascotExpression(linkText);
+        });
+        
+        link.addEventListener('mouseleave', function() {
+          resetMascotExpression();
+        });
+      });
 
       document.addEventListener('mousemove', updatePupils);
 
@@ -1923,6 +2075,19 @@
       });
     });
   </script>
+  
+  <style>
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-80px) scale(1.5);
+      }
+    }
+  </style>
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
